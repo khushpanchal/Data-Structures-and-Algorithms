@@ -13,28 +13,35 @@ class Solution{
     // arr: input array
     // n: size of array
     //Function to rearrange  the array elements alternately.
-    //https://www.geeksforgeeks.org/problems/-rearrange-array-alternately-1587115620/1
+    //Q. https://www.geeksforgeeks.org/problems/-rearrange-array-alternately-1587115620/1
     void rearrange(long long *arr, int n) 
     { 
-    	
-    	// Your code here
-    	int k=n-1;
-    	int j=0;
-    	int max = arr[n-1] + 1;
-    	
-    	for(int i=0; i<n; i++) {
-    	    if(i%2==0) {
-    	     arr[i] += max*(arr[k]%max); 
-    	     k--;
-    	    }else {
-    	     arr[i] += max*(arr[j]%max);
-    	     j++;
-    	    }
-    	}
-    	 
-    	 for(int i=0; i<n; i++) {
-    	     arr[i] /= max;
-    	 }
+        /*
+            - There is variable x, and you want to store y in x
+            - some max(say m) value greater than x and y
+            - transformed value (say z) = (x%m) + m*(y%m) <-- observe x = reminder when divide by m, and y left when devide by m
+            - To retrieve: 
+            - y = z/m (new value)
+            - x = z%m (original value)
+         */
+        // Your code here
+        int k=n-1;
+        int j=0;
+        int max = arr[n-1] + 1;
+        
+        for(int i=0; i<n; i++) {
+            if(i%2==0) {
+             arr[i] = (arr[i]%max) + max*(arr[k]%max); 
+             k--;
+            }else {
+             arr[i] = (arr[i]%max) + max*(arr[j]%max);
+             j++;
+            }
+        }
+         
+         for(int i=0; i<n; i++) {
+             arr[i] /= max;
+         }
     }
 };
 
@@ -70,11 +77,11 @@ int main()
         
         //printing the elements
         for (int i = 0; i < n; i++) 
-		    cout << arr[i] << " ";
-		
-		cout << endl;
+            cout << arr[i] << " ";
+        
+        cout << endl;
     }
-	return 0; 
+    return 0; 
 } 
 
 // } Driver Code Ends
