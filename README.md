@@ -4,4 +4,4 @@
 
 ## Upcoming
 
-## Leetcode 150: https://leetcode.com/studyplan/top-interview-150/
+### Leetcode 150: https://leetcode.com/studyplan/top-interview-150/
